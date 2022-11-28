@@ -8,7 +8,7 @@ class Excecaosoma
 private:
     unsigned int _x; 
     std::vector<int> _n;
-    int total;
+    double total;
 
 public:
     Excecaosoma();

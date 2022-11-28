@@ -1,8 +1,10 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <exception>
 
 #include "Excecaosoma.h"
+#include "ExcecaoAcimaDeX.h"
 
 Excecaosoma::Excecaosoma()
 {
@@ -15,7 +17,7 @@ Excecaosoma::Excecaosoma()
     }
 
     _x = x;
-    total = 0;
+    total = 0.0;
 
     int n;
     std::cout << "Quantos numeros compoem a sua soma?" << std::endl;
@@ -25,7 +27,7 @@ Excecaosoma::Excecaosoma()
     }
 
     int aux;
-    std::cout << "Digite o seus n números: ";
+    std::cout << "Digite o seus n numeros: ";
     for(int i=0; i<n; i++){
         std::cin >> aux;
 
@@ -42,11 +44,24 @@ Excecaosoma::~Excecaosoma() {
 }
 
 void Excecaosoma::somaValores() {
-    int cont = 1;
-    for(int i=0; total <= _x; i++){
+    bool teste;
+    int cont = 0;
+    for(int i=0; i<_n.size(); i++){
         total += _n[i];
+        if(total > _x){
+            teste = true; 
+            total -= _n[i];
+            break;
+        }
         cont++;
     }
+    
+    std::cout << "Valor da soma: " << total << std:: endl;
+    std::cout << "Quantidade de numeros somados: " << cont << std::endl;
+    std::cout << std::fixed << std::setprecision(2) << "Media: " << total / (double)cont << std::endl;
 
-    std::cout << --cont << std::endl;
+    if(teste){
+        throw  ExcecaoAcimaDeX();
+    }
 }
+    

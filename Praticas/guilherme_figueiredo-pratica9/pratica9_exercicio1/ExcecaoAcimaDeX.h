@@ -1,20 +1,13 @@
+#ifndef EXCECAO_ACIMA_DE_X__H
+#define EXCECAO_ACIMA_DE_X__H
+
 #include <iostream> 
 #include <exception>
 
 class ExcecaoAcimaDeX : public std::exception
 {
-private:
-    /* data */
 public:
-    ExcecaoAcimaDeX(/* args */);
-    ~ExcecaoAcimaDeX();
+    virtual const char* what() const noexcept override;
 };
 
-ExcecaoAcimaDeX::ExcecaoAcimaDeX(/* args */)
-{
-}
-
-ExcecaoAcimaDeX::~ExcecaoAcimaDeX()
-{
-}
-
+#endif
